@@ -34,7 +34,7 @@ namespace WinFormsQuiz
             lblQuestion.Text = questions[0, 0];
         }
 
-        //so i was getting errors if i changed the name of the button here but it's btnSubmit and it even works elsewhere
+        //so i was getting errors if i changed the name of the button here but it's btnSubmit and it even works elsewhere so i dont know what was happening
         private void button1_Click(object sender, EventArgs e)
         {
             // MessageBox.Show("oh you clicked me");
@@ -102,15 +102,27 @@ namespace WinFormsQuiz
 
                 //Restart button colour change
                 btnRestart.BackColor = Color.DimGray;
+                btnRestart.ForeColor = Color.White;
 
                 //Theme button colour change
                 btnTheme.BackColor = Color.DimGray;
+                btnTheme.ForeColor = Color.White;
 
                 //question text colour
                 lblQuestion.ForeColor = Color.White;
+                lblQuestion.BackColor = Color.DimGray;
 
                 //feedback text initial colour
                 lblMessage.ForeColor = Color.White;
+                lblMessage.BackColor = Color.DimGray;
+
+                //submit button colour change
+                btnSubmit.BackColor = Color.DimGray;
+                btnSubmit.ForeColor = Color.White;
+
+                //answer field colour change
+                txtAnswer.BackColor = Color.DimGray;
+                txtAnswer.ForeColor = Color.White;
 
             }
 
@@ -119,24 +131,41 @@ namespace WinFormsQuiz
                 isDark = false;
 
                 //background colour
-                BackColor = Color.Gold;
+                BackColor = Color.White;
 
                 //Restart button colour change
                 btnRestart.BackColor = Color.White;
+                btnRestart.ForeColor = Color.Black;
 
                 //Theme button colour change
                 btnTheme.BackColor = Color.White;
+                btnTheme.ForeColor = Color.Black;
 
                 //question text colour
                 lblQuestion.ForeColor = Color.Black;
+                lblQuestion.BackColor = Color.White;
 
                 //feedback text initial colour
                 lblMessage.ForeColor = Color.Black;
+                lblMessage.BackColor= Color.White;
+
+                //submit button colour change
+                btnSubmit.ForeColor = Color.Black;
+                btnSubmit.BackColor= Color.White;
+
+                //answer field colour change
+                txtAnswer.BackColor = Color.White;
+                txtAnswer.ForeColor = Color.Black;
 
             }
         }
 
         private void txtAnswer_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }

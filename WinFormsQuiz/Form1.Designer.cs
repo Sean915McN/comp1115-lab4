@@ -38,17 +38,17 @@
             // 
             // btnSubmit
             // 
-            btnSubmit.BackColor = SystemColors.Highlight;
+            btnSubmit.BackColor = Color.White;
             btnSubmit.Cursor = Cursors.NoMoveHoriz;
             btnSubmit.FlatAppearance.BorderColor = Color.Yellow;
             btnSubmit.FlatAppearance.BorderSize = 12;
             btnSubmit.FlatStyle = FlatStyle.Popup;
-            btnSubmit.ForeColor = Color.Red;
+            btnSubmit.ForeColor = Color.Black;
             btnSubmit.Location = new Point(595, 140);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(120, 216);
             btnSubmit.TabIndex = 0;
-            btnSubmit.Text = "awesome button";
+            btnSubmit.Text = "submit";
             btnSubmit.UseVisualStyleBackColor = false;
             btnSubmit.Click += button1_Click;
             // 
@@ -98,7 +98,7 @@
             btnTheme.Name = "btnTheme";
             btnTheme.Size = new Size(371, 194);
             btnTheme.TabIndex = 6;
-            btnTheme.Text = "change theme :D";
+            btnTheme.Text = "toggle theme";
             btnTheme.UseVisualStyleBackColor = true;
             btnTheme.Click += btnTheme_Click;
             // 
@@ -106,7 +106,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Gold;
+            BackColor = Color.White;
             ClientSize = new Size(1396, 444);
             Controls.Add(btnTheme);
             Controls.Add(btnRestart);
@@ -116,6 +116,7 @@
             Controls.Add(btnSubmit);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
