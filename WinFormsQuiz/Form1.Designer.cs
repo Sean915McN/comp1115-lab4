@@ -32,6 +32,8 @@
             lblQuestion = new Label();
             txtAnswer = new TextBox();
             lblMessage = new Label();
+            btnRestart = new Button();
+            btnTheme = new Button();
             SuspendLayout();
             // 
             // btnSubmit
@@ -67,6 +69,7 @@
             txtAnswer.Name = "txtAnswer";
             txtAnswer.Size = new Size(439, 23);
             txtAnswer.TabIndex = 3;
+            txtAnswer.TextChanged += txtAnswer_TextChanged;
             // 
             // lblMessage
             // 
@@ -79,12 +82,34 @@
             lblMessage.Text = "ENTER YOUR ANSWER";
             lblMessage.Click += lblMessage_Click;
             // 
+            // btnRestart
+            // 
+            btnRestart.Location = new Point(1321, 418);
+            btnRestart.Name = "btnRestart";
+            btnRestart.Size = new Size(75, 23);
+            btnRestart.TabIndex = 5;
+            btnRestart.Text = "restart";
+            btnRestart.UseVisualStyleBackColor = true;
+            btnRestart.Click += btnRestart_Click;
+            // 
+            // btnTheme
+            // 
+            btnTheme.Location = new Point(868, 114);
+            btnTheme.Name = "btnTheme";
+            btnTheme.Size = new Size(371, 194);
+            btnTheme.TabIndex = 6;
+            btnTheme.Text = "change theme :D";
+            btnTheme.UseVisualStyleBackColor = true;
+            btnTheme.Click += btnTheme_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveCaption;
+            BackColor = Color.Gold;
             ClientSize = new Size(1396, 444);
+            Controls.Add(btnTheme);
+            Controls.Add(btnRestart);
             Controls.Add(lblMessage);
             Controls.Add(txtAnswer);
             Controls.Add(lblQuestion);
@@ -101,5 +126,7 @@
         private Label lblQuestion;
         private TextBox txtAnswer;
         private Label lblMessage;
+        private Button btnRestart;
+        private Button btnTheme;
     }
 }
