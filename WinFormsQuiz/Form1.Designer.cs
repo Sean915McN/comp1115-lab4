@@ -44,9 +44,9 @@
             btnSubmit.FlatAppearance.BorderSize = 12;
             btnSubmit.FlatStyle = FlatStyle.Popup;
             btnSubmit.ForeColor = Color.Black;
-            btnSubmit.Location = new Point(595, 140);
+            btnSubmit.Location = new Point(679, 51);
             btnSubmit.Name = "btnSubmit";
-            btnSubmit.Size = new Size(120, 216);
+            btnSubmit.Size = new Size(122, 41);
             btnSubmit.TabIndex = 0;
             btnSubmit.Text = "submit";
             btnSubmit.UseVisualStyleBackColor = false;
@@ -84,9 +84,9 @@
             // 
             // btnRestart
             // 
-            btnRestart.Location = new Point(1321, 418);
+            btnRestart.Location = new Point(1262, 391);
             btnRestart.Name = "btnRestart";
-            btnRestart.Size = new Size(75, 23);
+            btnRestart.Size = new Size(122, 41);
             btnRestart.TabIndex = 5;
             btnRestart.Text = "restart";
             btnRestart.UseVisualStyleBackColor = true;
@@ -94,9 +94,9 @@
             // 
             // btnTheme
             // 
-            btnTheme.Location = new Point(868, 114);
+            btnTheme.Location = new Point(12, 391);
             btnTheme.Name = "btnTheme";
-            btnTheme.Size = new Size(371, 194);
+            btnTheme.Size = new Size(122, 41);
             btnTheme.TabIndex = 6;
             btnTheme.Text = "toggle theme";
             btnTheme.UseVisualStyleBackColor = true;

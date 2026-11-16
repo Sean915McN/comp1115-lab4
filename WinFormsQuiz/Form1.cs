@@ -1,10 +1,13 @@
+using System.Diagnostics.Eventing.Reader;
+using System.Drawing.Text;
+
 namespace WinFormsQuiz
 {
     public partial class Form1 : Form
     {
 
         //array of questions and answers
-        string[,] questions = new string[4, 2];
+        string[,] questions = new string[6, 2];
 
         //track question
         int currentQuestion = 0;
@@ -20,6 +23,12 @@ namespace WinFormsQuiz
         {
             InitializeComponent();
 
+            //call new LoadQuestions() method to populate quiz data
+            LoadQuestions();
+        }
+
+        private void LoadQuestions()
+        {
             //populate array
             questions[0, 0] = "What's the capital of Japan?";
             questions[0, 1] = "Tokyo";
@@ -29,49 +38,110 @@ namespace WinFormsQuiz
             questions[2, 1] = "Time to get a watch";
             questions[3, 0] = "What is 3+3?";
             questions[3, 1] = "6";
+            questions[4, 0] = "Are you sure?";
+            questions[4, 1] = "No...";
+            questions[5, 0] = "Why not?";
+            questions[5, 1] = "I don't know";
 
             //show 1st question on label
             lblQuestion.Text = questions[0, 0];
         }
 
+        /*
+         * [summary] give feedback on answer
+         * [param name] "text" feedback to show
+         * [param name] "colour" text colour for feedback
+        */
+
+        private void ShowFeedback(string text, Color colour)
+        {
+            lblMessage.Text = text;
+            lblMessage.ForeColor = colour;
+        }
+
+        /// <summary>
+        /// Get percentage
+        /// </summary>
+        /// <param name="correct"></param>
+        /// <param name="total"></param>
+        /// <return>
+        /// int
+        /// </return>
+
+        private int GetPercentScore(int correct, int total)
+        {
+            total = questions.GetLength(0);
+            int percent = (correct / total) * 100;
+            return percent;
+        }
+
+        private string GetGrade(int percent)
+        {
+            if (percent >= 90)
+            {
+                return ("A");
+            }
+
+            else if (percent >= 80)
+            {
+                return ("B");
+            }
+
+            else if (percent >= 70)
+            {
+                return ("C");
+            }
+            else if (percent >= 60)
+            {
+                return ("D");
+            }
+            else
+            {
+                return ("F");
+            }
+        }
+
+        private void FinishQuiz()
+        {
+            MessageBox.Show($"Quiz over nerdddddd. You got {GetGrade}");
+            lblMessage.Text = ($"You got {GetPercentScore}%");
+            lblMessage.ForeColor = Color.LightCoral;
+            btnSubmit.Enabled = false;
+        }
+
+
         //so i was getting errors if i changed the name of the button here but it's btnSubmit and it even works elsewhere so i dont know what was happening
         private void button1_Click(object sender, EventArgs e)
         {
             // MessageBox.Show("oh you clicked me");
-            if (txtAnswer.Text == (questions[currentQuestion, 1]))
+            if (txtAnswer.Text == (questions[currentQuestion, 1]).ToLower())
             {
-                lblMessage.Text = "Correct";
-                lblMessage.ForeColor = Color.DarkViolet;
+                ShowFeedback("Correct", Color.DarkViolet);
                 correct++;
             }
             else
             {
-                lblMessage.Text = "Wrong";
-                lblMessage.ForeColor = Color.Firebrick;
+                ShowFeedback("Wrong", Color.Firebrick);
             }
 
             //increment question
             currentQuestion++;
 
             //are there more questions?
+
             if (currentQuestion < questions.GetLength(0))
             {
-
                 lblQuestion.Text = questions[currentQuestion, 0];
             }
 
             else
             {
-                MessageBox.Show($"Quiz over nerdddddd. You got {correct} correct");
-                lblMessage.Text = ($"You got {correct} out of {questions.GetLength(0)}");
-                lblMessage.ForeColor = Color.LightCoral;
-                btnSubmit.Enabled = false;
+                FinishQuiz();
             }
 
             //clear line
             txtAnswer.Text = "";
         }
-
 
         private void lblQuestion_Click(object sender, EventArgs e)
         {
