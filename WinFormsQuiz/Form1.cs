@@ -71,44 +71,35 @@ namespace WinFormsQuiz
         private int GetPercentScore(int correct, int total)
         {
             total = questions.GetLength(0);
-            int percent = (correct / total) * 100;
+            int percent = correct * 100 / total;
             return percent;
         }
 
+        /// <summary>
+        /// Gives a grade letter based on percentage
+        /// </summary>
+        /// <param name="percent"></param>
+        /// <returns>
+        /// grade letter
+        /// </returns>
+        
         private string GetGrade(int percent)
         {
-            if (percent >= 90)
-            {
-                return ("A");
-            }
-
-            else if (percent >= 80)
-            {
-                return ("B");
-            }
-
-            else if (percent >= 70)
-            {
-                return ("C");
-            }
-            else if (percent >= 60)
-            {
-                return ("D");
-            }
-            else
-            {
-                return ("F");
-            }
+            if (percent >= 90) return ("A");
+            else if (percent >= 80) return ("B");
+            else if (percent >= 70) return ("C");
+            else if (percent >= 60) return ("D");
+            else return ("F");
         }
 
         private void FinishQuiz()
         {
-            MessageBox.Show($"Quiz over nerdddddd. You got {GetGrade}");
-            lblMessage.Text = ($"You got {GetPercentScore}%");
+            int score = GetPercentScore(correct, questions.GetLength(0));
+            string grade = GetGrade(score);
+            lblMessage.Text = $"You got {score}% for a grade of {grade}";
             lblMessage.ForeColor = Color.LightCoral;
             btnSubmit.Enabled = false;
         }
-
 
         //so i was getting errors if i changed the name of the button here but it's btnSubmit and it even works elsewhere so i dont know what was happening
         private void button1_Click(object sender, EventArgs e)
