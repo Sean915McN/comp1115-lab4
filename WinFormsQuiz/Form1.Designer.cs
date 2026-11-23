@@ -47,7 +47,7 @@
             btnSubmit.Location = new Point(679, 51);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(122, 41);
-            btnSubmit.TabIndex = 0;
+            btnSubmit.TabIndex = 4;
             btnSubmit.Text = "submit";
             btnSubmit.UseVisualStyleBackColor = false;
             btnSubmit.Click += button1_Click;
@@ -66,6 +66,7 @@
             // txtAnswer
             // 
             txtAnswer.Location = new Point(234, 61);
+            txtAnswer.MaxLength = 21;
             txtAnswer.Name = "txtAnswer";
             txtAnswer.Size = new Size(439, 23);
             txtAnswer.TabIndex = 3;
@@ -75,7 +76,7 @@
             // 
             lblMessage.AutoSize = true;
             lblMessage.Font = new Font("Comic Sans MS", 26.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            lblMessage.Location = new Point(841, 61);
+            lblMessage.Location = new Point(807, 42);
             lblMessage.Name = "lblMessage";
             lblMessage.Size = new Size(426, 50);
             lblMessage.TabIndex = 4;

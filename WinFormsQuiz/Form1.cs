@@ -30,8 +30,8 @@ namespace WinFormsQuiz
         private void LoadQuestions()
         {
             //populate array
-            questions[0, 0] = "What's the capital of Japan?";
-            questions[0, 1] = "Tokyo";
+            questions[0, 0] = "What is 5*3";
+            questions[0, 1] = "15";
             questions[1, 0] = "Bogos?";
             questions[1, 1] = "Binted";
             questions[2, 0] = "What time is it?";
@@ -104,34 +104,53 @@ namespace WinFormsQuiz
         //so i was getting errors if i changed the name of the button here but it's btnSubmit and it even works elsewhere so i dont know what was happening
         private void button1_Click(object sender, EventArgs e)
         {
-            // MessageBox.Show("oh you clicked me");
-            if (txtAnswer.Text == (questions[currentQuestion, 1]).ToLower())
+            try
             {
-                ShowFeedback("Correct", Color.DarkViolet);
-                correct++;
+                //testing 1st question only, convert answer to int
+                //int answer = int.Parse(txtAnswer.Text);
+
+                // MessageBox.Show("oh you clicked me");
+                if (txtAnswer.Text == (questions[currentQuestion, 1]).ToLower())
+                {
+                    ShowFeedback("Correct", Color.DarkViolet);
+                    correct++;
+                }
+                else
+                {
+                    ShowFeedback("Wrong", Color.Firebrick);
+                }
+
+                //increment question
+                currentQuestion++;
+
+                //are there more questions?
+
+                if (currentQuestion < questions.GetLength(0))
+                {
+                    lblQuestion.Text = questions[currentQuestion, 0];
+                }
+
+                else
+                {
+                    FinishQuiz();
+                }
+
+                //clear line
+                txtAnswer.Text = "";
             }
-            else
+
+            catch (OverflowException)
             {
-                ShowFeedback("Wrong", Color.Firebrick);
+                ShowFeedback("TOO FREAKIN HIGH BRO", Color.PapayaWhip);
+                txtAnswer.Focus();
             }
 
-            //increment question
-            currentQuestion++;
-
-            //are there more questions?
-
-            if (currentQuestion < questions.GetLength(0))
+            catch (FormatException)
             {
-                lblQuestion.Text = questions[currentQuestion, 0];
+                ShowFeedback("Enter a whole number numerically", Color.Red);
+                txtAnswer.Focus();
             }
-
-            else
-            {
-                FinishQuiz();
-            }
-
-            //clear line
-            txtAnswer.Text = "";
+            return; //arret here
         }
 
         private void lblQuestion_Click(object sender, EventArgs e)
