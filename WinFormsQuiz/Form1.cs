@@ -18,6 +18,9 @@ namespace WinFormsQuiz
         //creating the darkness bool
         bool isDark = false;
 
+        //creating question counter
+        int questionCount;
+
         //startup method, runs automatically upon loading
         public Form1()
         {
@@ -26,6 +29,7 @@ namespace WinFormsQuiz
             //call new LoadQuestions() method to populate quiz data
             LoadQuestions();
         }
+
 
         private void LoadQuestions()
         {
@@ -70,7 +74,7 @@ namespace WinFormsQuiz
 
         private int GetPercentScore(int correct, int total)
         {
-            total = questions.GetLength(0);
+            total = questionCount;
             int percent = correct * 100 / total;
             return percent;
         }
@@ -94,7 +98,7 @@ namespace WinFormsQuiz
 
         private void FinishQuiz()
         {
-            int score = GetPercentScore(correct, questions.GetLength(0));
+            int score = GetPercentScore(correct, questionCount);
             string grade = GetGrade(score);
             lblMessage.Text = $"You got {score}% for a grade of {grade}";
             lblMessage.ForeColor = Color.LightCoral;
@@ -125,7 +129,7 @@ namespace WinFormsQuiz
 
                 //are there more questions?
 
-                if (currentQuestion < questions.GetLength(0))
+                if (currentQuestion < questionCount)
                 {
                     lblQuestion.Text = questions[currentQuestion, 0];
                 }
@@ -270,6 +274,47 @@ namespace WinFormsQuiz
                 ShowFeedback("Invalid Time Limit", Color.BlanchedAlmond);
                 txtTimeLimit.Focus();
             }
+        }
+
+
+        private void btnCounter_Click(object sender, EventArgs e)
+        {
+            //testing example code from earlier with different ints and text boxes
+            if (int.TryParse(txtCounter.Text, out int questionCount) == true)
+            {
+
+                if (questionCount > 0)
+                {
+                    lblCounter.Text = $"Total Questions: {questionCount}";
+                    ShowFeedback("", Color.Black);
+                }
+                if (questionCount <= 6)
+                {
+                    lblCounter.Text = $"Total Questions: {questionCount}";
+                    ShowFeedback("", Color.Black);
+                }
+                if (questionCount >= 7)
+                {
+                    lblCounter.Text = "Please enter a valid number (1-6)";
+                    txtCounter.Focus();
+                }
+                if (questionCount < 0)
+                {
+                    lblCounter.Text = "Please enter a valid number (1-6)";
+                    txtCounter.Focus();
+                }
+            }
+
+            else
+            {
+                lblCounter.Text = "Please enter a valid number (1-6)";
+                txtCounter.Focus();
+            }
+        }
+
+        private void txtCounter_TextChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }

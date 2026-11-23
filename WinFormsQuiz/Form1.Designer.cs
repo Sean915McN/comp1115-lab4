@@ -37,6 +37,11 @@
             lblTimer = new Label();
             txtTimeLimit = new TextBox();
             btnSetTimeLimit = new Button();
+            btnCounter = new Button();
+            txtCounter = new TextBox();
+            lblCounter = new Label();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // btnSubmit
@@ -133,12 +138,52 @@
             btnSetTimeLimit.UseVisualStyleBackColor = true;
             btnSetTimeLimit.Click += btnSetTimeLimit_Click;
             // 
+            // btnCounter
+            // 
+            btnCounter.Location = new Point(315, 219);
+            btnCounter.Name = "btnCounter";
+            btnCounter.Size = new Size(75, 23);
+            btnCounter.TabIndex = 10;
+            btnCounter.Text = "Start Quiz";
+            btnCounter.UseVisualStyleBackColor = true;
+            btnCounter.Click += btnCounter_Click;
+            // 
+            // txtCounter
+            // 
+            txtCounter.Location = new Point(301, 190);
+            txtCounter.MaxLength = 1;
+            txtCounter.Name = "txtCounter";
+            txtCounter.Size = new Size(100, 23);
+            txtCounter.TabIndex = 11;
+            txtCounter.TextChanged += txtCounter_TextChanged;
+            // 
+            // lblCounter
+            // 
+            lblCounter.AutoSize = true;
+            lblCounter.Location = new Point(301, 146);
+            lblCounter.Name = "lblCounter";
+            lblCounter.Size = new Size(108, 15);
+            lblCounter.TabIndex = 12;
+            lblCounter.Text = "Set Total Questions";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Green;
+            pictureBox1.Location = new Point(218, 114);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(276, 147);
+            pictureBox1.TabIndex = 13;
+            pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1396, 444);
+            Controls.Add(lblCounter);
+            Controls.Add(txtCounter);
+            Controls.Add(btnCounter);
             Controls.Add(btnSetTimeLimit);
             Controls.Add(txtTimeLimit);
             Controls.Add(lblTimer);
@@ -148,9 +193,11 @@
             Controls.Add(txtAnswer);
             Controls.Add(lblQuestion);
             Controls.Add(btnSubmit);
+            Controls.Add(pictureBox1);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -166,5 +213,9 @@
         private Label lblTimer;
         private TextBox txtTimeLimit;
         private Button btnSetTimeLimit;
+        private Button btnCounter;
+        private TextBox txtCounter;
+        private Label lblCounter;
+        private PictureBox pictureBox1;
     }
 }
