@@ -82,7 +82,7 @@ namespace WinFormsQuiz
         /// <returns>
         /// grade letter
         /// </returns>
-        
+
         private string GetGrade(int percent)
         {
             if (percent >= 90) return ("A");
@@ -227,11 +227,11 @@ namespace WinFormsQuiz
 
                 //feedback text initial colour
                 lblMessage.ForeColor = Color.Black;
-                lblMessage.BackColor= Color.White;
+                lblMessage.BackColor = Color.White;
 
                 //submit button colour change
                 btnSubmit.ForeColor = Color.Black;
-                btnSubmit.BackColor= Color.White;
+                btnSubmit.BackColor = Color.White;
 
                 //answer field colour change
                 txtAnswer.BackColor = Color.White;
@@ -248,6 +248,28 @@ namespace WinFormsQuiz
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        //accidentally named wrong
+        private void txtTimer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSetTimeLimit_Click(object sender, EventArgs e)
+        {
+            //use int.TryParse to TRY converting value to an int without crashing
+            if (int.TryParse(txtTimeLimit.Text, out int timeLimit) == true)
+            {
+                lblTimer.Text = $"Time Limit: {timeLimit}";
+                ShowFeedback("", Color.Black);
+            }
+
+            else
+            {
+                ShowFeedback("Invalid Time Limit", Color.BlanchedAlmond);
+                txtTimeLimit.Focus();
+            }
         }
     }
 }

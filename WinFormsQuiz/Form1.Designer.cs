@@ -34,6 +34,9 @@
             lblMessage = new Label();
             btnRestart = new Button();
             btnTheme = new Button();
+            lblTimer = new Label();
+            txtTimeLimit = new TextBox();
+            btnSetTimeLimit = new Button();
             SuspendLayout();
             // 
             // btnSubmit
@@ -103,12 +106,42 @@
             btnTheme.UseVisualStyleBackColor = true;
             btnTheme.Click += btnTheme_Click;
             // 
+            // lblTimer
+            // 
+            lblTimer.AutoSize = true;
+            lblTimer.Location = new Point(679, 146);
+            lblTimer.Name = "lblTimer";
+            lblTimer.Size = new Size(64, 15);
+            lblTimer.TabIndex = 7;
+            lblTimer.Text = "Time Limit";
+            lblTimer.Click += txtTimer_Click;
+            // 
+            // txtTimeLimit
+            // 
+            txtTimeLimit.Location = new Point(665, 164);
+            txtTimeLimit.Name = "txtTimeLimit";
+            txtTimeLimit.Size = new Size(100, 23);
+            txtTimeLimit.TabIndex = 8;
+            // 
+            // btnSetTimeLimit
+            // 
+            btnSetTimeLimit.Location = new Point(679, 193);
+            btnSetTimeLimit.Name = "btnSetTimeLimit";
+            btnSetTimeLimit.Size = new Size(75, 23);
+            btnSetTimeLimit.TabIndex = 9;
+            btnSetTimeLimit.Text = "Set";
+            btnSetTimeLimit.UseVisualStyleBackColor = true;
+            btnSetTimeLimit.Click += btnSetTimeLimit_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1396, 444);
+            Controls.Add(btnSetTimeLimit);
+            Controls.Add(txtTimeLimit);
+            Controls.Add(lblTimer);
             Controls.Add(btnTheme);
             Controls.Add(btnRestart);
             Controls.Add(lblMessage);
@@ -130,5 +163,8 @@
         private Label lblMessage;
         private Button btnRestart;
         private Button btnTheme;
+        private Label lblTimer;
+        private TextBox txtTimeLimit;
+        private Button btnSetTimeLimit;
     }
 }
