@@ -1,5 +1,6 @@
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing.Text;
+using System.Numerics;
 
 namespace WinFormsQuiz
 {
@@ -19,7 +20,7 @@ namespace WinFormsQuiz
         bool isDark = false;
 
         //creating question counter
-        int questionCount;
+        int questionCount = 0;
 
         //startup method, runs automatically upon loading
         public Form1()
@@ -74,9 +75,12 @@ namespace WinFormsQuiz
 
         private int GetPercentScore(int correct, int total)
         {
-            total = questionCount;
+            /*total = questionCount;
             int percent = correct * 100 / total;
-            return percent;
+            return percent;*/
+
+            if (total == 0) return 0;
+            return (correct * 100) / total;
         }
 
         /// <summary>
@@ -174,6 +178,7 @@ namespace WinFormsQuiz
             lblMessage.Text = "Restarting the quiz";
             lblQuestion.Text = questions[0, 0];
             btnSubmit.Enabled = true;
+            questionCount = 0;
         }
 
         private void btnTheme_Click(object sender, EventArgs e)
@@ -282,26 +287,38 @@ namespace WinFormsQuiz
             //testing example code from earlier with different ints and text boxes
             if (int.TryParse(txtCounter.Text, out int questionCount) == true)
             {
+                currentQuestion = 0;
+                correct = 0;
+                questionCount = 0;
+                btnCounter.Enabled = true;
+                btnSubmit.Enabled = false;
 
                 if (questionCount > 0)
                 {
                     lblCounter.Text = $"Total Questions: {questionCount}";
                     ShowFeedback("", Color.Black);
+                    btnSubmit.Enabled = true;
+                    btnCounter.Enabled = false; 
                 }
                 if (questionCount <= 6)
                 {
                     lblCounter.Text = $"Total Questions: {questionCount}";
                     ShowFeedback("", Color.Black);
+                    btnCounter.Enabled = false;
+                    btnSubmit.Enabled = true;
                 }
                 if (questionCount >= 7)
                 {
                     lblCounter.Text = "Please enter a valid number (1-6)";
                     txtCounter.Focus();
+                    btnCounter.Enabled = true;
                 }
                 if (questionCount < 0)
                 {
                     lblCounter.Text = "Please enter a valid number (1-6)";
                     txtCounter.Focus();
+                    btnCounter.Enabled = true;
+
                 }
             }
 
